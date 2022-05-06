@@ -189,39 +189,98 @@ values (1,2,4,5),(2,2,5,8),(3,2,6,15),(4,3,1,1),(5,3,2,11),(6,1,3,1),(7,1,2,2),(
 select * from nhan_vien
 where ho_ten like 'h%' or ho_ten like 't%' or ho_ten like 'k%' and length(ho_ten) < 16;
 
--- ---------------------task 3------------------------- chưa xong
+-- ---------------------task 3-------------------------
 
-select *,ROUND(DATEDIFF(CURDATE(), ngay_sinh) / 365, 0) AS `so_tuoi` 
+select * , ROUND(DATEDIFF(CURDATE(), ngay_sinh) / 365, 0) as so_tuoi
 from khach_hang
-where `so_tuoi` between 18 and 50; 
-
-
-select * from khach_hang 
-having dia_chi like '%đà nẵng' or dia_chi like '%quảng trị%';
+where ROUND(DATEDIFF(CURDATE(), ngay_sinh) / 365, 0) between 18 and 50 
+and dia_chi like '%đà nẵng' or dia_chi like '%quảng trị%' ;
 
  
- -- ---------------------task 4-------------------------chưa xong
-select hop_dong
+ -- ---------------------task 4-------------------------
+select * ,count(hop_dong.ma_khach_hang) as so_lan_dat_phong
  from khach_hang
- join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang;
+ join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+ group by hop_dong.ma_khach_hang
+ order by so_lan_dat_phong;
+
  
-  -- ---------------------task 5------------------------- chưa xong
- select khach_hang.ma_khach_hang, khach_hang.ho_ten, loai_khach.ten_loai_khach, hop_dong.ma_hop_dong,
+ -- ---------------------task 5-------------------------   
+select khach_hang.ma_khach_hang, khach_hang.ho_ten, loai_khach.ten_loai_khach, hop_dong.ma_hop_dong,
  dich_vu.ten_dich_vu, hop_dong.ngay_lam_hop_dong, hop_dong.ngay_ket_thuc,
  ( dich_vu.chi_phi_thue + hop_dong_chi_tiet.so_luong * dich_vu_di_kem.gia) as tong_tien
  from khach_hang
  join hop_dong on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
  join dich_vu on dich_vu.ma_dich_vu = hop_dong.ma_dich_vu
  join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_hop_dong =hop_dong.ma_hop_dong
- join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem ;
+ join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+ join loai_khach on loai_khach.ma_loai_khach = khach_hang.ma_loai_khach;
+ -- ---------------------task 6-------------------------
+ select dich_vu.ma_dich_vu, dich_vu.ten_dich_vu, dien_tich, chi_phi_thue, dich_vu_di_kem.ten_dich_vu_di_kem
+ from dich_vu
+ left join loai_dich_vu on dich_vu.ma_loai_dich_vu = loai_dich_vu.ma_loai_dich_vu
+ left join hop_dong on dich_vu.ma_dich_vu = hop_dong.ma_dich_vu
+ left join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem =hop_dong_chi_tiet.ma_dich_vu_di_kem
+ where hop_dong.ma_dich_vu not in (select hop_dong.ma_dich_vu from hop_dong where quarter(ngay_lam_hop_dong) = 1)
+group by hop_dong.ma_dich_vu;
 
- -- ---------------------task 6-------------------------chưa xong
- select ma_dich_vu, ten_dich_vu, dien_tich, chi_phi_thue, ten_loai_dich_vu
- 
- 
- 
- ;
-  -- ---------------------task 7-------------------------chưa xong
+  -- ---------------------task 7-------------------------
+select * 
+from hop_dong
+join khach_hang on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+where khach_hang.ma_khach_hang not in (select khach_hang.ma_khach_hang 
+from hop_dong 
+join khach_hang on hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
+where  year(ngay_lam_hop_dong) = 2021  
+group by khach_hang.ma_khach_hang) 
+;
+-- subquery xong not in các khách hàng dùng trong 2021 thì sẽ ra 2020 ko trong 2021
+  -- ---------------------task 8------------------------- 
+select distinct ho_ten
+from khach_hang; -- cách 1
 
- select ma_dich_vu, ten_dich_vu, dien_tich, so_nguoi_toi_da, chi_phi_thue, ten_loai_dich_vu ;
+select ho_ten
+from khach_hang
+group by ho_ten;-- cách 2
+  -- ---------------------task 9------------------------- 
+select month(hop_dong.ngay_lam_hop_dong) as doanh_thu_thang_thu, count(khach_hang.ho_ten) as so_khach_hang_da_dat
+from hop_dong
+join khach_hang on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+where year(ngay_lam_hop_dong) = 2021
+group by month(ngay_lam_hop_dong)
+order by month(ngay_lam_hop_dong) ;
+  -- group by để phan biệt các tháng , order by để xếp tháng tăng dần
+  
+  
+  -- ---------------------task 10------------------------- 
+select hop_dong.ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, sum(hop_dong_chi_tiet.so_luong) as so_luong_dich_vu_di_kem
+from hop_dong
+left join hop_dong_chi_tiet on  hop_dong_chi_tiet.ma_hop_dong = hop_dong.ma_hop_dong
+left join dich_vu_di_kem on dich_vu_di_kem.ma_dich_vu_di_kem = hop_dong_chi_tiet.ma_dich_vu_di_kem
+group by hop_dong.ma_hop_dong;
+  
+  -- ---------------------task 11------------------------- 
+select loai_khach.ma_loai_khach,loai_khach.ten_loai_khach, dich_vu_di_kem.ma_dich_vu_di_kem ,dich_vu_di_kem.ten_dich_vu_di_kem, dia_chi
+from dich_vu_di_kem 
+join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+join hop_dong on hop_dong.ma_hop_dong = hop_dong_chi_tiet.ma_hop_dong
+join khach_hang on khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+join loai_khach on loai_khach.ma_loai_khach =  khach_hang.ma_loai_khach
+where ten_loai_khach = 'Diamond' and dia_chi = '%Vinh%' or '%Quảng Ngãi%';
+  
+
+  -- ---------------------task 12------------------------- 
+  
+  
+  
+  -- ---------------------task 13------------------------- 
+select ten_dich_vu_di_kem, sum(so_luong) as so_lan_su_dung
+from dich_vu_di_kem
+join hop_dong_chi_tiet on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+group by dich_vu_di_kem.ma_dich_vu_di_kem 
+having so_lan_su_dung >= all (select sum(so_luong) from hop_dong_chi_tiet 
+join dich_vu_di_kem on hop_dong_chi_tiet.ma_dich_vu_di_kem = dich_vu_di_kem.ma_dich_vu_di_kem
+ group by dich_vu_di_kem.ma_dich_vu_di_kem);
+
+
 
