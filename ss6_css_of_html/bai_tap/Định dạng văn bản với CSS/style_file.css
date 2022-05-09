@@ -5,6 +5,11 @@ p {
     font-size: 20px;
 }
 
+.indent {
+    /*padding-left: 100px*/
+    text-indent: 50px
+}
+
 h1 {
     font-size: 40px;
     text-align: left;
@@ -21,6 +26,7 @@ b {
 label {
     color: #4169E1
 }
-br{
-    text-indent: 20px
+
+br {
 }
+
