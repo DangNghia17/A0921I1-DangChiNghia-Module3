@@ -1,3 +1,55 @@
-body{
+body {
+     font-family: Tahoma;
 
+ }
+
+.muc-luc {
+    background-color: orange;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin: 10px;
+    padding: 20px;
+    font-size: 20px;
+    height: 320px;
+    width: 1280px;
+    border: 3px solid black;
+
+}
+
+h5 {
+    display: inline-block;
+    background-color: darkseagreen;
+    color: black;
+    font-size: 14px;
+    margin: 20px;
+    padding: 20px;
+}
+
+img {
+    margin: 10px;
+    /*padding: 8px;*/
+}
+
+p {
+    background-color: yellow;
+}
+
+.content {
+    font-style: normal;
+}
+
+.tieu-de {
+    font-style: italic;
+    font-size: 30px;
+    background-color: yellowgreen;
+    text-align: center;
+}
+button{
+    background-color: black;
+    color:#E8E8E8;
+    border: 2px solid deeppink;
+    height: 20px;
+    width: 150px;
+    float: right;
 }

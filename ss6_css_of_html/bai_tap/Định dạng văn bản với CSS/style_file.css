@@ -1,11 +1,12 @@
 p {
-    display: inline;
+    /*display: inline;*/
     flex-wrap: wrap;
     font-family: "Times New Roman";
     font-size: 20px;
+    text-indent: 50px
 }
 
-.indent {
+p.indent {
     /*padding-left: 100px*/
     text-indent: 50px
 }
