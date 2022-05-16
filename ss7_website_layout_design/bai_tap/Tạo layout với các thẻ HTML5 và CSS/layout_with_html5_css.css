@@ -2,6 +2,8 @@
 * {
     font-family: Tahoma;
     box-sizing: border-box;
+    text-align: center;
+    font-size: 20px;
 }
 
 header {
@@ -14,6 +16,27 @@ nav {
     border: 3px solid black;
     margin-top: 10px;
 }
+section {
+    height: 250px;
+    background: yellow;
+}
+
+aside {
+    height: 500px;
+    background: pink;
+    border-left: 3px solid rebeccapurple ;
+}
+
+article {
+    height: 250px;
+    background: green;
+}
+
+footer {
+    height: 250px;
+    background-color: orange;
+    border: 3px solid #4169E1;
+}
 
 li {
     margin-left: 10px;
@@ -24,10 +47,12 @@ li {
     float: left;
 
 }
-.row{
+
+.row {
     display: flex;
     flex-wrap: wrap;
 }
+
 .col-1 {
     width: 8.33%;
 }

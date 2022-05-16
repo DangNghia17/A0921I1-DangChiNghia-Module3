@@ -1,0 +1,128 @@
+<html>
+<head>
+    <style>
+        div.gallery {
+            border: 2px solid #ccc;
+        }
+
+        div.gallery:hover {
+            border: 2px solid #777;
+
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: 100%;
+        }
+
+        div.desc:hover{
+            background-color: green;
+            color: whitesmoke;
+        }
+        div.desc {
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: Tahoma;
+        }
+
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        div {
+            float: left;
+        }
+        img{
+            /*display: block;*/
+            max-width:350px;
+            max-height:200px;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="../../../template_bootstrap_link/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<h2>Responsive Image Gallery</h2>
+<h4>Resize the browser window to see the effect.</h4>
+<div class="row">
+    <div class=" col-sm-6 col-md-3 col-lg-3">
+        <div class="gallery  ">
+            <img src="images/anh1.jpg" alt="Trolltunga Norway " >
+            <div class="desc">Trolltunga Norway</div>
+        </div>
+    </div>
+
+    <div class=" col-sm-6 col-md-3 col-lg-3">
+        <div class="gallery">
+            <img src="images/anh2.jpg" alt="Forest" >
+            <div class="desc">Forest</div>
+        </div>
+    </div>
+
+    <div class=" col-sm-6 col-md-3 col-lg-3">
+        <div class="gallery">
+            <img src="images/anh3.jpg" alt="Northern Lights" >
+            <div class="desc">Northern Lights</div>
+        </div>
+    </div>
+
+    <div class=" col-sm-6 col-md-3 col-lg-3">
+        <div class="gallery">
+            <img src="images/anh4.jpg" alt="Mountains" >
+            <div class="desc">Mountains</div>
+        </div>
+    </div>
+</div>
+
+<div style="padding-top: 50px" class="row">
+    <div class=" col-sm-6 col-md-3 col-lg-3 ">
+        <div class="gallery ">
+            <img src="images/anh5.jpg" alt="Trolltunga Norway">
+            <div class="desc">Pansipan</div>
+        </div>
+    </div>
+
+    <div class=" col-sm-6 col-md-3 col-lg-3">
+        <div class="gallery">
+            <img src="images/anh6.jpg" alt="Forest" >
+            <div class="desc">Aol jeriaja nana</div>
+        </div>
+    </div>
+
+    <div class=" col-sm-6 col-md-3 col-lg-3">
+        <div class="gallery">
+            <img src="images/anh7.jpg" alt="Northern Lights" >
+            <div class="desc">Pado ajiuaw mawsa</div>
+        </div>
+    </div>
+
+    <div class=" col-sm-6 col-md-3 col-lg-3">
+        <div class="gallery">
+            <img src="images/anh8.jpg" alt="Mountains" >
+            <div class="desc">Queue Lans JMLQJ</div>
+        </div>
+    </div>
+</div>
+    <div class="clearfix"></div>
+
+    <div style="padding:6px;">
+        <p>This example use media queries to re-arrange the images on different screen sizes: for screens larger than
+            700px
+            wide, it will show four images side by side, for screens smaller than 700px, it will show two images side by
+            side. For screens smaller than 500px, the images will stack vertically (100%).</p>
+    </div>
+
+
+</body>
+</html>
