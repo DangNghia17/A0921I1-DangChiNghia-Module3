@@ -9,16 +9,16 @@ import java.io.PrintWriter;
 @WebServlet(name = "DiscountServlet", urlPatterns = "/discount")
 public class DiscountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        float list_price = Float.parseFloat(request.getParameter("price"));
-        float discount_percent = Float.parseFloat(request.getParameter("discount"));
-        float discount_amount = list_price * discount_percent * 0.01f;
+        float listPrice = Float.parseFloat(request.getParameter("price"));
+        float discountPercent = Float.parseFloat(request.getParameter("discount"));
+        float discountAmount = listPrice * discountPercent * 0.01f;
 
 
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
-        writer.println("<h1>list price: " + list_price + "</h1>");
-        writer.println("<h1>Discount percent: " + discount_percent + "% </h1>");
-        writer.println("<h1>Discount Amount:: " + discount_amount + "</h1>");
+        writer.println("<h1>list price: " + listPrice + "</h1>");
+        writer.println("<h1>Discount percent: " + discountPercent + "% </h1>");
+        writer.println("<h1>Discount Amount:: " + discountAmount + "</h1>");
         writer.println("</html>");
     }
 
