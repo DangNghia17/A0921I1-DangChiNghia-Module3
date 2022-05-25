@@ -14,10 +14,10 @@ public class CustomerServlet extends HttpServlet {
     //tao database ảo
     private static List<Customer> customerList = new ArrayList<>();
     static {
-        customerList.add(new Customer( "Hoan", "1/2/2002", "Da Nang", true));
-        customerList.add(new Customer( "Hung", "1/2/2002", "Da Nang", true));
-        customerList.add(new Customer( "Trung", "1/2/2002", "Da Nang", false));
-        customerList.add(new Customer( "Toan", "1/2/2002", "Da Nang", false));
+        customerList.add(new Customer( "Hoan", "11/2/2002", "Da Nang", true));
+        customerList.add(new Customer( "Hung", "31/12/2002", "Da Nang", true));
+        customerList.add(new Customer( "Trung", "4/1/2002", "Da Nang", false));
+        customerList.add(new Customer( "Toan", "1/6/2002", "Da Nang", false));
         customerList.add(new Customer( "Thang", "1/2/2002", "Da Nang", true));
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
