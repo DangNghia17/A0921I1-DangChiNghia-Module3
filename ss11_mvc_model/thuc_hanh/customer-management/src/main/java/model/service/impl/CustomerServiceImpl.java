@@ -1,13 +1,14 @@
-package model.service;
+package model.service.impl;
 
 import model.bean.Customer;
+import model.service.CustomerService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl implements model.service.CustomerService {
     private static Map<Integer, Customer> customers;
 
     static {

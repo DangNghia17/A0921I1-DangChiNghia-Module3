@@ -2,7 +2,8 @@ package controller;
 
 import model.bean.Customer;
 import model.service.CustomerService;
-import model.service.CustomerServiceImpl;
+import model.service.impl.CustomerServiceImpl;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +15,7 @@ import java.util.List;
 @javax.servlet.annotation.WebServlet(name = "controller.CustomerServlet", urlPatterns = "/customers")
 public class CustomerServlet extends javax.servlet.http.HttpServlet {
 
-    private CustomerService customerService = new CustomerServiceImpl();
+    private model.service.CustomerService customerService = new model.service.impl.CustomerServiceImpl();
 
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
