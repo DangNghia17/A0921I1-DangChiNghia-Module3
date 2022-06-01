@@ -8,9 +8,41 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Delete Product</title>
 </head>
 <body>
-
+<a href="/controller">Back to product list</a>
+<p>Are you sure?</p>
+<form method="post" style="width: 30%">
+    <fieldset>
+        <legend>Product Information</legend>
+        <table>
+            <tr>
+                <td>Id:</td>
+                <td>${product.id}</td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td>${product.name}</td>
+            </tr>
+            <tr>
+                <td>Price:</td>
+                <td>${product.price}</td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>${product.description}</td>
+            </tr>
+            <tr>
+                <td>Brand:</td>
+                <td>${product.brand}</td>
+            </tr>
+            <tr>
+                <td><button type="submit">Delete</button> </td>
+                <td><a href="/controller">Back to product list</a></td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
 </body>
 </html>

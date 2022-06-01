@@ -19,6 +19,9 @@
         .message {
             color: red;
         }
+        .body{
+            padding-left: 10px;
+        }
     </style>
 </head>
 <body>
