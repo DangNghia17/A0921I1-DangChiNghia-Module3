@@ -133,7 +133,6 @@ public class ProductServlet extends javax.servlet.http.HttpServlet {
 
         Product product = new Product(id, name, price, description, country);
         productService.save(product);
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/create.jsp");
         request.setAttribute("message", "New Prodcuts was created");
         dispatcher.forward(request, response);

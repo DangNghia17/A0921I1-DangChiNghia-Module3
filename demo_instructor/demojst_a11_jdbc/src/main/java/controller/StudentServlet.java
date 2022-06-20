@@ -50,7 +50,6 @@ public class StudentServlet extends HttpServlet {
         int classId=Integer.parseInt(request.getParameter("classId"));
         String email = request.getParameter("email");
         Student student =new Student(name,gender,birthday,point,classId,email);
-
         boolean flag =studentService.save(student);
         if (flag){
             request.setAttribute("mess","Them moi thanh cong");
